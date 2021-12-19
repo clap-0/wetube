@@ -29,7 +29,10 @@ block content
     div.video__data
       a(href=`/users/${video.owner._id}`).video__owner-avatar
         if video.owner.avatarUrl
-          img(src="/"+video.owner.avatarUrl).avatar
+          if video.owner.avatarUrl.includes("github")
+            img(src=video.owner.avatarUrl).avatar
+          else 
+            img(src="/"+video.owner.avatarUrl).avatar
         else 
           i.fas.fa-user-circle.fa-3x
       h4.video__owner-name
@@ -54,7 +57,10 @@ block content
           .video__comment__column 
             a(href=`/users/${comment.owner._id}`) 
               if comment.owner.avatarUrl
-                img(src="/"+comment.owner.avatarUrl).avatar
+                if comment.owner.avatarUrl.includes("github")
+                  img(src=comment.owner.avatarUrl).avatar
+                else
+                  img(src="/"+comment.owner.avatarUrl).avatar
               else 
                 i.fas.fa-user-circle.fa-3x
           .video__comment__column 

@@ -18,7 +18,10 @@ header
             if !loggedInUser.avatarUrl
               i.fas.fa-user-circle.fa-3x
             else
-              img.avatar(src="/"+loggedInUser.avatarUrl)
+              if loggedInUser.avatarUrl.includes("github")
+                img.avatar(src=loggedInUser.avatarUrl)
+              else
+                img.avatar(src="/"+loggedInUser.avatarUrl)
       else
         li 
           a(href="/login") Login
