@@ -1,7 +1,6 @@
 import User from "../models/User";
 import Video from "../models/Video";
 import Comment from "../models/Comment";
-import { restart } from "nodemon";
 
 export const home = async (req, res) => {
   const videos = await Video.find({})
