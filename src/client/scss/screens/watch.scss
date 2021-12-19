@@ -1,0 +1,42 @@
+.video__info {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px;
+  .video__primary-data {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0px;
+    border-bottom: 1px solid $hr;
+    h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    div {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  }
+  .video__data {
+    padding: 18px 0px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-template-rows: 1fr auto;
+    gap: 20px 10px;
+    .video__owner-name {
+      font-size: 16px;
+      align-self: center;
+    }
+    .video__description {
+      grid-column: 2/3;
+      grid-row: 2/3;
+      .video__settings {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        font-size: 14px;
+        opacity: 0.7;
+      }
+    }
+  }
+}

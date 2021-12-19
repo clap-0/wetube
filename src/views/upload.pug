@@ -1,0 +1,22 @@
+extends base.pug
+
+block content 
+  div.upload__container
+    div.upload__video
+      video#preview
+      button#actionBtn.social__btn Record now!
+
+    if(errorMessage)
+      span=errorMessage
+    form(method="POST", enctype="multipart/form-data")
+      label(for="video") Video File 
+      input(type="file", accept="video/*", required, id="video", name="video")
+      label(for="thumbnail") Thumbnail File 
+      input(type="file", accept="image/*", required, id="thumbnail", name="thumbnail")
+      input(name="title", placeholder="Video Title", maxlength=80, required)
+      input(name="description", placeholder="Description", maxlength=140, required)
+      input(name="hashtags", placeholder="Hashtags, separated by comma", required)
+      input(value="Upload", type="submit") 
+    
+block scripts 
+  script(src="/static/js/recorder.js") 

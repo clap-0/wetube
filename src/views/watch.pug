@@ -1,0 +1,69 @@
+extends base.pug
+
+block content
+  div#videoContainer(data-id=video._id)
+    video(src="/" + video.fileUrl)
+    div#videoControls.videoControls
+      div.videoControls__play
+        span#play.videoControls__playBtn
+          i.fas.fa-play
+        div.videoControls__time
+          span#currentTime 0:00
+          span  / 
+          span#totalTime 0:00
+      input(type="range",step="1", value="0", min="0")#timeline.videoControls__timeline
+      div.videoControls__volume
+        input(type="range",step="0.1", value=0.5, min="0", max="1")#volume
+        span#mute
+          i.fas.fa-volume-up
+      div 
+        span#fullScreen
+          i.fas.fa-expand
+  
+  div.video__info
+    div.video__primary-data
+      h3=video.title 
+      div
+        small 조회수 #{video.meta.views}회 • 
+        small=video.createdAt.toLocaleDateString()
+    div.video__data
+      a(href=`/users/${video.owner._id}`).video__owner-avatar
+        if video.owner.avatarUrl
+          img(src="/"+video.owner.avatarUrl).avatar
+        else 
+          i.fas.fa-user-circle.fa-3x
+      h4.video__owner-name
+        a(href=`/users/${video.owner._id}`)=video.owner.name
+      div.video__description
+        p=video.description 
+        if String(video.owner._id) === String(loggedInUser._id)
+          div.video__settings
+            a(href=`${video.id}/edit`) Edit Video &rarr; 
+            a(href=`${video.id}/delete`) Delete Video &rarr; 
+
+  if loggedIn
+    div.video__add-comments 
+      form.video__add-comment-form#commentForm 
+        textarea(cols="30", rows="10", placeholder="Write a comment...").video__add-comment-textarea#commentTextarea
+        button.video__add-comment-btn Add Comment 
+
+  div.video__comments 
+    ul 
+      each comment in video.comments.reverse()
+        li.video__comment(data-id=comment._id)
+          .video__comment__column 
+            a(href=`/users/${comment.owner._id}`) 
+              if comment.owner.avatarUrl
+                img(src="/"+comment.owner.avatarUrl).avatar
+              else 
+                i.fas.fa-user-circle.fa-3x
+          .video__comment__column 
+            a(href=`/users/${comment.owner._id}`)=comment.owner.name
+            span #{comment.text} 
+          .video__comment__column 
+            if String(comment.owner._id) === String(loggedInUser._id)
+              i.fas.fa-times.commentDelete
+
+block scripts 
+  script(src="/static/js/videoPlayer.js") 
+  script(src="/static/js/commentSection.js") 

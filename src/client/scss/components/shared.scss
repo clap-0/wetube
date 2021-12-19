@@ -1,0 +1,64 @@
+.empty__message {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.video-grid {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 40px;
+  a {
+    text-decoration: underline;
+  }
+}
+
+@keyframes goAway {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.message {
+  position: absolute;
+  z-index: 1000;
+  top: 10px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 200px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 10px;
+  animation: goAway 0.5s ease-in-out forwards;
+  animation-delay: 2s;
+  &.error {
+    background-color: tomato;
+    color: white;
+  }
+  &.info {
+    background-color: #14ce48;
+    color: white;
+  }
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.avatar--large {
+  width: 145px;
+  height: 145px;
+}

@@ -1,0 +1,28 @@
+.search__form {
+  max-width: 420px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  input {
+    all: unset;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0;
+    font-size: 17px;
+    color: white;
+    background-color: black;
+    width: 90%;
+  }
+  button {
+    all: unset;
+    position: absolute;
+    font-size: 18px;
+    padding: 10px;
+    right: 35px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
